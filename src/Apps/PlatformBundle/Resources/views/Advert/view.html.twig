@@ -1,0 +1,188 @@
+{# src/Apps/PlatformBundle/Resources/views/Advert/view.html.twig #}
+
+{% extends "AppsPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Lecture d'une annonce - {{ parent() }}
+{% endblock %}
+
+{% block platform_body %}
+    <div class="col-md-8 blog-main">
+        <article class="blog-post">
+            <header>
+                <h1>My Insightful Article</h1>
+                <div class="lead-image">
+                    {# On vérifie qu'une image soit bien associée à l'article #}
+                    {% if advert.image is not null %}
+                      <img
+                        src="{{ asset(advert.image.webPath) }}"
+                        alt="{{ advert.image.alt }}"
+                        class="img-responsive"
+                      />
+                    {% endif %}
+                    <div class="meta clearfix">
+
+                        <div class="author">
+                            <i class="fa fa-user"></i>
+                            <span class="data">{{advert.author}}</span>
+                        </div>
+                        <div class="date">
+                            <i class="fa fa-calendar"></i>
+                            <span class="data">{{ advert.date|date('d/m/Y') }}</span>
+                        </div>
+                        <div class="comments">
+                            <i class="fa fa-comments"></i>
+                            <span class="data"><a href="#">26 Comments</a></span>
+                        </div>                                
+                    </div>
+                </div>
+            </header>
+            {% if not advert.categories.empty %}
+              <p>
+                Cette annonce est parue dans les catégories suivantes :
+                {% for category in advert.categories %}
+                  {{ category.name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+              </p>
+            {% endif %}
+
+            {% if listAdvertSkills|length > 0 %}
+              <div>
+                Cette annonce requiert les compétences suivantes :
+                <ul>
+                  {% for advertSkill in listAdvertSkills %}
+                    <li>{{ advertSkill.skill.name }} : niveau {{ advertSkill.level }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+        </article>
+        <aside>
+            <p>
+              <a href="{{ path('apps_platform_home') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Retour à la liste
+              </a>
+              <a href="{{ path('apps_platform_edit', {'id': advert.id}) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-edit"></i>
+                Modifier l'annonce
+              </a>
+              <a href="{{ path('apps_platform_delete', {'id': advert.id}) }}" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash"></i>
+                Supprimer l'annonce
+              </a>
+            </p>            
+        </aside>
+        <aside class="comments" id="comments">
+            <hr>
+
+            <h2><i class="fa fa-comments"></i> 24 Comments</h2>
+
+            <article class="comment">
+                <header class="clearfix">
+                    <img src="{{ asset('img/avatar.png') }}" alt="A Smart Guy" class="avatar">
+                    <div class="meta">
+                        <h3><a href="#">Willy Wonka</a></h3>
+                        <span class="date">
+                            27 July 2013
+                        </span>
+                        <span class="separator">
+                            -
+                        </span>
+
+                        <a href="#" class="reply-link">Reply</a>                
+                    </div>
+                </header>
+                 <div class="body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut  liquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                </div>
+            </article>
+
+            <article class="comment reply">
+                <header class="clearfix">
+                    <img src="{{ asset('img/avatar.png') }}" alt="A Smart Guy" class="avatar">
+                    <div class="meta">
+                        <h3><a href="#">Willy Wonka</a></h3>
+                        <span class="date">
+                            27 July 2013
+                        </span>
+                        <span class="separator">
+                            -
+                        </span>
+
+                        <a href="#" class="reply-link">Reply</a>                
+                    </div>
+                </header>
+                 <div class="body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut  liquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                </div>
+            </article>
+
+            <article class="comment ">
+                <header class="clearfix">
+                    <img src="{{ asset('img/avatar.png') }}" alt="A Smart Guy" class="avatar">
+                    <div class="meta">
+                        <h3><a href="#">Willy Wonka</a></h3>
+                        <span class="date">
+                            27 July 2013
+                        </span>
+                        <span class="separator">
+                            -
+                        </span>
+
+                        <a href="#" class="reply-link">Reply</a>                
+                    </div>
+                </header>
+                 <div class="body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut  liquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                </div>
+            </article>
+
+            <article class="comment">
+                <header class="clearfix">
+                    <img src="{{asset('img/avatar.png')}}" alt="A Smart Guy" class="avatar">
+                    <div class="meta">
+                        <h3><a href="http://demo.hackerthemes.com/tales/html-version/3.3.6-v3/blog-detail.html#">Willy Wonka</a></h3>
+                        <span class="date">
+                            27 July 2013
+                        </span>
+                        <span class="separator">
+                            -
+                        </span>
+
+                        <a href="http://demo.hackerthemes.com/tales/html-version/3.3.6-v3/blog-detail.html#create-comment" class="reply-link">Reply</a>                
+                    </div>
+                </header>
+                 <div class="body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut  liquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                </div>
+            </article>        
+        </aside>
+
+        <aside class="create-comment" id="create-comment">
+            <hr>    
+
+            <h2><i class="fa fa-heart"></i> Add Comment</h2>
+
+            <form action="#" method="get" accept-charset="utf-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" name="name" id="comment-name" placeholder="Name" class="form-control input-lg">    
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" name="email" id="comment-email" placeholder="Email" class="form-control input-lg">    
+                    </div>
+                </div>
+
+                <input type="url" name="name" id="comment-url" placeholder="Website" class="form-control input-lg">
+
+                <textarea rows="10" name="message" id="comment-body" placeholder="Your thoughts..." class="form-control input-lg"></textarea>
+
+                <div class="buttons clearfix">
+                    <button class="btn btn-xlarge btn-tales-two">Cancel</button>
+                    <button type="submit" class="btn btn-xlarge btn-tales-one">Submit</button>
+                </div>
+            </form>
+        </aside>
+    </div>
+{% endblock %}

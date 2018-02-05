@@ -1,0 +1,54 @@
+{# src/Apps/PlatformBundle/Resources/views/Advert/menu.html.twig #}
+
+<aside class="col-md-4 blog-aside">
+    <div class="aside-widget">
+        <header>
+            <h3>Articles recent...</h3>
+        </header>
+        <div class="body">
+            <ul class="tales-list">
+                {% for advert in listAdverts %}
+                  <li>
+                    <a href="{{ path('apps_platform_view', {'id': advert.id}) }}">
+                      {{ advert.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="aside-widget">
+        <header>
+            <h3>Listes des catégories</h3>
+        </header>
+        <div class="body">
+            <ul class="tales-list">
+                {% for categorie in categories %}
+                  <li>
+                    <a href="{{ path('apps_platform_view', {'id': categorie.id}) }}">
+                      {{ categorie.name }}
+                    </a>
+                  </li>
+                {% endfor %}                
+            </ul>
+        </div>
+    </div>
+
+    <div class="aside-widget">
+        <header>
+            <h3>Tags</h3>
+        </header>
+        <div class="body clearfix">
+            <ul class="tags">
+                {% for tag in tags %}
+                  <li>
+                    <a href="{{ path('apps_platform_view', {'id': tag.id}) }}">
+                      {{ tag.name }}
+                    </a>
+                  </li>
+                {% endfor %}                
+            </ul>
+        </div>
+    </div>
+</aside>

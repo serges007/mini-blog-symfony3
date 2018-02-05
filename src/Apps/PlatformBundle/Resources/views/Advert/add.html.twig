@@ -1,0 +1,18 @@
+{# src/Apps/PlatformBundle/Resources/views/Advert/add.html.twig #}
+
+{% extends "AppsPlatformBundle::layout.html.twig" %}
+
+{% block platform_body %}
+    <div class="col-md-8 blog-main">
+        <article class="row">
+            <h2>Ajouter une annonce</h2>
+
+            {{ include("AppsPlatformBundle:Advert:form.html.twig") }}
+
+            <p>
+              Attention : cette annonce sera ajoutée directement
+              sur la page d'accueil après validation du formulaire.
+            </p>                    
+        </article>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+# src/OC/CoreBundle/Resources/config/routing.yml
+
+apps_core_home:
+    path: /
+    defaults:
+        _controller: AppsCoreBundle:Core:index
+
+apps_core_contact:
+    path: /contact
+    defaults:
+        _controller: AppsCoreBundle:Core:contact

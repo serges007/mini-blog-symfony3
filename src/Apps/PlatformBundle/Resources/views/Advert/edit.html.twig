@@ -1,0 +1,27 @@
+{# src/Apps/PlatformBundle/Resources/views/Advert/edit.html.twig #}
+
+{% extends "AppsPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier une annonce - {{ parent() }}
+{% endblock %}
+
+{% block platform_body %}
+    <div class="col-md-8 blog-main">
+        <h2>Modifier une annonce</h2>
+
+        {{ include("AppsPlatformBundle:Advert:form.html.twig") }}
+
+        <p>
+          Vous éditez une annonce déjà existante, merci de ne pas changer
+          l'esprit générale de l'annonce déjà publiée.
+        </p>
+
+        <p>
+          <a href="{{ path('apps_platform_view', {'id': advert.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à l'annonce
+          </a>
+        </p>        
+    </div>
+{% endblock %}

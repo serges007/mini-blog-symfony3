@@ -1,0 +1,42 @@
+# src/Apps/PlatformBundle/Resources/config/routing.yml
+
+apps_platform_home:
+    path:      /{page}
+    defaults:
+        _controller: AppsPlatformBundle:Advert:index
+        page:        1
+    requirements:
+        page: \d*
+    
+apps_platform_view:
+    path:      /advert/{id}
+    defaults:
+        _controller: AppsPlatformBundle:Advert:view
+    requirements:
+        id: \d+
+
+apps_platform_add:
+    path:      /add
+    defaults:
+        _controller: AppsPlatformBundle:Advert:add
+
+apps_platform_edit:
+    path:      /edit/{id}
+    defaults:
+        _controller: AppsPlatformBundle:Advert:edit
+    requirements:
+        id: \d+
+
+apps_platform_delete:
+    path:      /delete/{id}
+    defaults:
+        _controller: AppsPlatformBundle:Advert:delete
+    requirements:
+        id: \d+
+
+apps_platform_purge:
+    path:     /purge/{days}
+    defaults:
+        _controller: AppsPlatformBundle:Advert:purge
+    requirements:
+        days: \d+
